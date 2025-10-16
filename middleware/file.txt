@@ -1,0 +1,34 @@
+
+-----------------------------------chat working flow---------------------------------------- 
+
+(sockets--events)------->(there works)
+
+"connection"	--------Client connects to server
+"user_connected" ------	Authenticates/initializes user
+"create_chat"	--------Creates 1:1 or group chat
+"fetch_chats"	--------Gets list of user’s chats
+"join_chat"	------------User opens chat, joins room, gets messages
+"send_message"	--------Sends a message to chat, saves and broadcasts it
+"fetch_messages"	----Retrieves full message history
+"mark_as_read"	--------Marks a message as read in DB
+"disconnect"	--------Handles user disconnection
+
+
+---------------------------------------Backend and frontend working flow---------------------
+
+(Event Name)	-----(From)	-------(To)  -------(Description)
+
+user_connected	-----Frontend	---Backend	----Identify user & send chat list
+chat_list	---------Backend	---Frontend	----List of user's chats
+create_chat	---------Frontend	---Backend	----Start new chat or group
+chat_created	-----Backend	---Frontend	----Notifies users about new chat
+join_chat	---------Frontend	---Backend	----Joins user to chat room
+chat_history	-----Backend	---Frontend	----Sends old messages in selected chat
+send_message	-----Frontend	---Backend	----Sends message to server
+getMessage	---------Backend	---All Users ---Broadcasts message to users in chat room
+fetch_messages	-----Frontend	---Backend	----Gets messages for a specific chat
+mark_as_read	-----Frontend	---Backend	----Marks message as read
+disconnect	---------Auto	-------Backend	----Handles socket disconnect
+
+
+----------------------------------------------END---------------------------------------------
